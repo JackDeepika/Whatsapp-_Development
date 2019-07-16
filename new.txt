@@ -1,0 +1,27 @@
+package LoginTestCases;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class opencatalina {
+	@Test
+	public void catalina() throws InterruptedException { 
+	WebDriver driver;
+	System.setProperty("webdriver.chrome.driver","D:\\selenium\\chromedriver_win32\\chromedriver.exe");
+    driver=new ChromeDriver();
+    driver.get("http://arfapp.trintas.com:8081/trintas-usermngmt/ui/#/");
+    driver.manage().deleteAllCookies();
+    driver.manage().window().maximize();
+    driver.manage().timeouts().pageLoadTimeout(10,TimeUnit.SECONDS);
+    Thread.sleep(2000);
+    driver.findElement(By.id("email")).sendKeys("adminicore");
+    driver.findElement(By.id("pwd")).sendKeys("Admin@!23");
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    driver.findElement(By.xpath("//*[text()=\"Login\"]")).click();
+    driver.quit();
+	}
+}
